@@ -15,6 +15,9 @@ class CreateProgrammingLanguagesTable extends Migration
     {
         Schema::create('programming_languages', function (Blueprint $table) {
             $table->id();
+            $table->string('name');
+            $table->string('video');
+            $table->string('module');
             $table->timestamps();
         });
     }
