@@ -23,17 +23,12 @@ Route::get('/', function () {
 
 Auth::routes();
 
-Route::middleware(['auth', 'second'])->group(function () {
+
     Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
     
-    //Route::get('export/users', [UserController::class, 'export'])->name('users.export');
-    //Route::get('export/teachers', [TeacherController::class, 'export'])->name('teachers.export');
-    //Route::get('export/programminglanguages', [ProgrammingLanguagesController::class, 'export'])->name('programminglanguages.export');
-    //Route::get('export/students', [StudentsController::class, 'export'])->name('students.export');
-    
     Route::resource('user', UserController::class);
-    Route::resource('teachers', TeacherController::class);
-    Route::resource('programminglanguages', ProgrammingLanguagesController::class);
-    Route::resource('students', StudentsController::class);
-});
+    Route::resource('/teachers', TeacherController::class);
+    Route::resource('/programminglanguages', ProgrammingLanguagesController::class);
+    Route::resource('/students', StudentsController::class);
+
 

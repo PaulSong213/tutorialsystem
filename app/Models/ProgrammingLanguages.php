@@ -7,5 +7,6 @@ use Illuminate\Database\Eloquent\Model;
 
 class ProgrammingLanguages extends Model
 {
-    use HasFactory;
+    protected $table = 'programminglanguages';
+    protected $fillable = ['name','video','module',];
 }
