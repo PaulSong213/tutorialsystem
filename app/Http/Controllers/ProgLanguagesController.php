@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\ProgLanguages;
 use App\Http\Requests\StoreProgLanguagesRequest;
 use App\Http\Requests\UpdateProgLanguagesRequest;
+use Illuminate\Support\Facades\Auth;
 
 class ProgLanguagesController extends Controller
 {
@@ -22,9 +23,11 @@ class ProgLanguagesController extends Controller
             return view('programmingLanguages.index',
             ['progLang' => $progLang]);
         }else{
+            if(!Auth::user()->is_teacher)return redirect('/home');
+
             return view('table', [
                 'actionUrl' => '/programming-languages',
-                'tableTitle' => "Manage Programming Languages",
+                'tableTitle' => "Programming Languages",
                 'tableColumnsName' => ['Id','Name','Cover Photo'],
                 'tableColumns' => ['id','name','cover_photo_name'],
                 'tableRows' => $progLang
@@ -39,7 +42,23 @@ class ProgLanguagesController extends Controller
      */
     public function create()
     {
-        
+        if(!Auth::user()->is_teacher)return redirect('/home');
+        return view('add', [
+            'actionUrl' => '/programming-languages',
+            'title' => "Add Programming Language",
+            'inputs' => [
+                [
+                    "type" => "text",
+                    "label" => "Name",
+                    "name" => "name",
+                ],
+                [
+                    "type" => "file",
+                    "label" => "Cover Photo",
+                    "name" => "cover_photo_name",
+                ]
+            ]
+        ]);
     }
 
     /**
@@ -48,9 +67,16 @@ class ProgLanguagesController extends Controller
      * @param  \App\Http\Requests\StoreProgLanguagesRequest  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(StoreProgLanguagesRequest $request)
+    public function store(Request $request)
     {
-        //
+        // $request->cover_photo_name->store('files');
+        $request->cover_photo_name->storeAs('public', $request->cover_photo_name->getClientOriginalName());
+        if(!Auth::user()->is_teacher)return redirect('/home');
+        $row = new ProgLanguages;
+        $row->name = $request['name'];
+        $row->cover_photo_name = $request->cover_photo_name->getClientOriginalName();
+        $row->save();
+        return back()->with('success', 'Programming Language Created Successfully!');
     }
 
     /**
@@ -61,6 +87,7 @@ class ProgLanguagesController extends Controller
      */
     public function show($id)
     {
+        if(!Auth::user()->is_teacher)return redirect('/home');
         $users = ProgLanguages::where('id', $id)->first();
         return view('edit', [
             'actionUrl' => '/programming-languages',
@@ -100,6 +127,7 @@ class ProgLanguagesController extends Controller
      */
     public function update(Request $request, $id)
     {
+        if(!Auth::user()->is_teacher)return redirect('/home');
         $users = ProgLanguages::find($id);
         if(!$users){
             return back()->with('error', 'Programming Language not found');
@@ -116,6 +144,7 @@ class ProgLanguagesController extends Controller
      */
     public function destroy($id)
     {
+        if(!Auth::user()->is_teacher)return redirect('/home');
         $users = ProgLanguages::find($id);
         if(!$users){
             return back()->with('error', 'Programming Language not found');

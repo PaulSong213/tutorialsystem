@@ -24,7 +24,7 @@
     
   <div class="w-100 mx-auto my-5" style="max-width: 700px;">
       <div class="d-flex justify-content-between mb-3">
-          <h6 class="text-secondary fw-bold fs-3"> {{$title}} </h6>
+        <h6 class="text-secondary fw-bold fs-3"> {{$title}} </h6>
       </div>
       <form action="{{$actionUrl.'/'.$data['id']}}" method="POST" >
       @csrf

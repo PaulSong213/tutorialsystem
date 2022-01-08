@@ -21,9 +21,9 @@
 </head>
 <body>
     <div id="app">
-        <nav class="navbar navbar-expand-md navbar-dark bg-dark shadow-sm ">
-            <div class="container">
-                <a class="navbar-brand d-flex" href="{{ url('/') }}">
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark shadow-sm py-3">
+            <div class="container w-100 mx-auto" style="margin: 0;">
+                <a class="navbar-brand d-flex" href="{{ url('/home') }}">
                     <img src="/image/logo.png" style="height: 1.8rem;" alt="">
                     <span class="my-auto mx-3">DFCAMPCLP-IT CAMPUS</span>
                 </a>
@@ -33,9 +33,6 @@
 
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <!-- Left Side Of Navbar -->
-                    <ul class="navbar-nav me-auto">
-
-                    </ul>
 
                     <!-- Right Side Of Navbar -->
                     <ul class="navbar-nav ms-auto">
@@ -53,10 +50,24 @@
                                 </li>
                             @endif
                         @else
-                            <li class="nav-item dropdown">
-                                <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                            <li class="nav-item dropdown fs-4 d-flex">
+
+                                <a id="navbarDropdown" class="nav-link dropdown-toggle mx-1 text-light" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                                     {{ Auth::user()->name }}
                                 </a>
+                                @if(Auth::user()->is_teacher)
+                                <a id="navbarDropdown" style="height: max-content;" class="nav-link btn btn-primary text-light fw-bold my-auto fs-6 px-3 mx-1" href="/user" >
+                                    Manage Users
+                                </a>
+                                <a id="navbarDropdown" style="height: max-content;" class="nav-link btn btn-primary text-light fw-bold my-auto fs-6 px-3 mx-1" href="/programming-languages?manage=1" >
+                                    Manage Programming Languages
+                                </a>
+
+                                <a id="navbarDropdown" style="height: max-content;" class="nav-link btn btn-primary text-light fw-bold my-auto fs-6 px-3 mx-1" href="/file?manage=1" >
+                                    Manage Files
+                                </a>
+
+                                @endif
 
                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
                                     <a class="dropdown-item" href="{{ route('logout') }}"

@@ -25,6 +25,13 @@
 <div class="w-100 mx-auto my-5" style="max-width: 1000px;">
     <div class="d-flex justify-content-between">
         <h6 class="text-secondary fw-bold fs-3"> {{$tableTitle}} </h6>
+
+        <a href="{{$actionUrl.'/create'}}">
+        <button class="btn btn-primary fw-bold fs-6">
+            Add {{$tableTitle}}
+        </button>
+        </a>
+
     </div>
     <table class="table table-striped">
         <thead>
