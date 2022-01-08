@@ -2,11 +2,11 @@
 
 namespace App\Policies;
 
-use App\Models\ProgrammingLanguages;
+use App\Models\ProgLanguages;
 use App\Models\User;
 use Illuminate\Auth\Access\HandlesAuthorization;
 
-class ProgrammingLanguagesPolicy
+class ProgLanguagesPolicy
 {
     use HandlesAuthorization;
 
@@ -25,10 +25,10 @@ class ProgrammingLanguagesPolicy
      * Determine whether the user can view the model.
      *
      * @param  \App\Models\User  $user
-     * @param  \App\Models\ProgrammingLanguages  $programmingLanguages
+     * @param  \App\Models\ProgLanguages  $progLanguages
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function view(User $user, ProgrammingLanguages $programmingLanguages)
+    public function view(User $user, ProgLanguages $progLanguages)
     {
         //
     }
@@ -48,10 +48,10 @@ class ProgrammingLanguagesPolicy
      * Determine whether the user can update the model.
      *
      * @param  \App\Models\User  $user
-     * @param  \App\Models\ProgrammingLanguages  $programmingLanguages
+     * @param  \App\Models\ProgLanguages  $progLanguages
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function update(User $user, ProgrammingLanguages $programmingLanguages)
+    public function update(User $user, ProgLanguages $progLanguages)
     {
         //
     }
@@ -60,10 +60,10 @@ class ProgrammingLanguagesPolicy
      * Determine whether the user can delete the model.
      *
      * @param  \App\Models\User  $user
-     * @param  \App\Models\ProgrammingLanguages  $programmingLanguages
+     * @param  \App\Models\ProgLanguages  $progLanguages
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function delete(User $user, ProgrammingLanguages $programmingLanguages)
+    public function delete(User $user, ProgLanguages $progLanguages)
     {
         //
     }
@@ -72,10 +72,10 @@ class ProgrammingLanguagesPolicy
      * Determine whether the user can restore the model.
      *
      * @param  \App\Models\User  $user
-     * @param  \App\Models\ProgrammingLanguages  $programmingLanguages
+     * @param  \App\Models\ProgLanguages  $progLanguages
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function restore(User $user, ProgrammingLanguages $programmingLanguages)
+    public function restore(User $user, ProgLanguages $progLanguages)
     {
         //
     }
@@ -84,10 +84,10 @@ class ProgrammingLanguagesPolicy
      * Determine whether the user can permanently delete the model.
      *
      * @param  \App\Models\User  $user
-     * @param  \App\Models\ProgrammingLanguages  $programmingLanguages
+     * @param  \App\Models\ProgLanguages  $progLanguages
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function forceDelete(User $user, ProgrammingLanguages $programmingLanguages)
+    public function forceDelete(User $user, ProgLanguages $progLanguages)
     {
         //
     }

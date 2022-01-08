@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\TeacherController;
 use App\Http\Controllers\StudentsController;
-use App\Http\Controllers\ProgrammingLanguagesController;
+use App\Http\Controllers\ProgLanguagesController;
 
 /*
 |--------------------------------------------------------------------------
@@ -28,7 +28,7 @@ Auth::routes();
     
     Route::resource('user', UserController::class);
     Route::resource('/teachers', TeacherController::class);
-    Route::resource('/programminglanguages', ProgrammingLanguagesController::class);
+    Route::resource('/proglanguages', ProgLanguagesController::class);
     Route::resource('/students', StudentsController::class);
 
 

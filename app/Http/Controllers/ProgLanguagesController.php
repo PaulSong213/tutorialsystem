@@ -2,11 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\ProgrammingLanguages;
-use App\Http\Requests\StoreProgrammingLanguagesRequest;
-use App\Http\Requests\UpdateProgrammingLanguagesRequest;
+use App\Models\ProgLanguages;
+use App\Http\Requests\StoreProgLanguagesRequest;
+use App\Http\Requests\UpdateProgLanguagesRequest;
 
-class ProgrammingLanguagesController extends Controller
+class ProgLanguagesController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -31,10 +31,10 @@ class ProgrammingLanguagesController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \App\Http\Requests\StoreProgrammingLanguagesRequest  $request
+     * @param  \App\Http\Requests\StoreProgLanguagesRequest  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(StoreProgrammingLanguagesRequest $request)
+    public function store(StoreProgLanguagesRequest $request)
     {
         //
     }
@@ -42,10 +42,10 @@ class ProgrammingLanguagesController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\ProgrammingLanguages  $programmingLanguages
+     * @param  \App\Models\ProgLanguages  $progLanguages
      * @return \Illuminate\Http\Response
      */
-    public function show(ProgrammingLanguages $programmingLanguages)
+    public function show(ProgLanguages $progLanguages)
     {
         //
     }
@@ -53,10 +53,10 @@ class ProgrammingLanguagesController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\ProgrammingLanguages  $programmingLanguages
+     * @param  \App\Models\ProgLanguages  $progLanguages
      * @return \Illuminate\Http\Response
      */
-    public function edit(ProgrammingLanguages $programmingLanguages)
+    public function edit(ProgLanguages $progLanguages)
     {
         //
     }
@@ -64,11 +64,11 @@ class ProgrammingLanguagesController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \App\Http\Requests\UpdateProgrammingLanguagesRequest  $request
-     * @param  \App\Models\ProgrammingLanguages  $programmingLanguages
+     * @param  \App\Http\Requests\UpdateProgLanguagesRequest  $request
+     * @param  \App\Models\ProgLanguages  $progLanguages
      * @return \Illuminate\Http\Response
      */
-    public function update(UpdateProgrammingLanguagesRequest $request, ProgrammingLanguages $programmingLanguages)
+    public function update(UpdateProgLanguagesRequest $request, ProgLanguages $progLanguages)
     {
         //
     }
@@ -76,10 +76,10 @@ class ProgrammingLanguagesController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\ProgrammingLanguages  $programmingLanguages
+     * @param  \App\Models\ProgLanguages  $progLanguages
      * @return \Illuminate\Http\Response
      */
-    public function destroy(ProgrammingLanguages $programmingLanguages)
+    public function destroy(ProgLanguages $progLanguages)
     {
         //
     }
