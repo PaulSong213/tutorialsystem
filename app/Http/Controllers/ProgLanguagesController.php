@@ -15,7 +15,12 @@ class ProgLanguagesController extends Controller
      */
     public function index()
     {
-        //
+        $progLang = ProgLanguages::all();
+
+        //Last Order Details
+
+        return view('programmingLanguages.index',
+        ['progLang' => $progLang]);
     }
 
     /**
@@ -25,7 +30,7 @@ class ProgLanguagesController extends Controller
      */
     public function create()
     {
-        //
+        
     }
 
     /**

@@ -71,7 +71,7 @@
     </div>
 </div> -->
 
-<section class="vh-100" style="background-color: #7e8596;">
+<section class="vh-100" style="background-color: #c4b987;">
     <div class="container py-5 h-100">
         <div class="row d-flex justify-content-center align-items-center h-100">
         <div class="col col-xl-10">
@@ -133,7 +133,10 @@
                             {{ __('Forgot Your Password?') }}
                         </a>
                     @endif
-                    <p class="mb-5 pb-lg-2" style="color: #393f81;">Don't have an account? <a href="/register" style="color: #393f81;">Register here</a></p>
+                    <p class=" pb-lg-2" style="color: #393f81;">Don't have an account? <a href="/register" style="color: #393f81;">Register here</a></p>
+                    <!-- <p class="text-secondary">
+                        Programming Language modules and videos. Start reading and watching videos about your favorite programming language by logging in.
+                    </p> -->
                     </form>
                 </div>
                 </div>

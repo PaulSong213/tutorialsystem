@@ -5,6 +5,8 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\TeacherController;
 use App\Http\Controllers\StudentsController;
 use App\Http\Controllers\ProgLanguagesController;
+use App\Http\Controllers\FilesController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -24,11 +26,13 @@ Route::get('/', function () {
 Auth::routes();
 
 
-    Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+    Route::get('/home', [App\Http\Controllers\ProgLanguagesController::class, 'index'])->name('home');
     
     Route::resource('user', UserController::class);
     Route::resource('/teachers', TeacherController::class);
-    Route::resource('/proglanguages', ProgLanguagesController::class);
+    Route::resource('/programming-languages', ProgLanguagesController::class);
     Route::resource('/students', StudentsController::class);
+    Route::resource('/file', FilesController::class);
+
 
 
