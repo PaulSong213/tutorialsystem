@@ -172,11 +172,6 @@ class FilesController extends Controller
                         "name" => "title",
                     ],
                     [
-                        "type" => "file",
-                        "label" => "File",
-                        "name" => "filename",
-                    ],
-                    [
                         "type" => "Text",
                         "label" => "Description",
                         "name" => "description",

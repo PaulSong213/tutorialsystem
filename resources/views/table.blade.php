@@ -60,7 +60,7 @@
                         Video
                         @endif 
                     @elseif($column == "filename" || $column == "cover_photo_name")    
-                        <a href="/files/{{$row[$column]}}" target="_blank">
+                        <a href="/storage/{{$row[$column]}}" target="_blank">
                             {{$row[$column]}}
                         </a>
                     @elseif($column == "programming_language_id")    

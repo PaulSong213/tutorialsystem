@@ -70,8 +70,9 @@ class ProgLanguagesController extends Controller
     public function store(Request $request)
     {
         // $request->cover_photo_name->store('files');
-        $request->cover_photo_name->storeAs('public', $request->cover_photo_name->getClientOriginalName());
+        
         if(!Auth::user()->is_teacher)return redirect('/home');
+        $request->cover_photo_name->storeAs('public', $request->cover_photo_name->getClientOriginalName());
         $row = new ProgLanguages;
         $row->name = $request['name'];
         $row->cover_photo_name = $request->cover_photo_name->getClientOriginalName();
@@ -97,11 +98,6 @@ class ProgLanguagesController extends Controller
                     "type" => "text",
                     "label" => "Name",
                     "name" => "name",
-                ],
-                [
-                    "type" => "file",
-                    "label" => "Cover Photo",
-                    "name" => "cover_photo_name",
                 ]
             ],
             'data' => $users
@@ -132,6 +128,7 @@ class ProgLanguagesController extends Controller
         if(!$users){
             return back()->with('error', 'Programming Language not found');
         }
+        
         $users->update($request->all());
         return redirect('/programming-languages?manage=1')->with('success', 'Programming Language Updated Successfully!');
     }

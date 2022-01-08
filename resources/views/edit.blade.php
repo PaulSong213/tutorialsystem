@@ -26,7 +26,7 @@
       <div class="d-flex justify-content-between mb-3">
         <h6 class="text-secondary fw-bold fs-3"> {{$title}} </h6>
       </div>
-      <form action="{{$actionUrl.'/'.$data['id']}}" method="POST" >
+      <form action="{{$actionUrl.'/'.$data['id']}}" method="POST" enctype="multipart/form-data">
       @csrf
       @method('PATCH')
 
@@ -35,7 +35,7 @@
         @if($input['type'] != 'hidden')
         <label for="{{$input['label']}}" class="form-label">{{$input['label']}}</label>
         @endif
-        @if($input['type'] != 'password')
+        @if($input['type'] != 'password' || $input['type'] != 'file' ) 
         <input required type="{{$input['type']}}" class="form-control" name="{{$input['name']}}" id="{{$input['name']}}" value="{{$data[$input['name']]}}">
         @else
         <input required type="{{$input['type']}}" class="form-control" name="{{$input['name']}}" id="{{$input['name']}}">
