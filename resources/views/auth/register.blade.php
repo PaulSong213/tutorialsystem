@@ -75,7 +75,7 @@
         </div>
     </div> -->
 
-    <section class="vh-100" style="background-color: #7e8596;">
+    <section class="" style="background-color: #7e8596;height:100%;min-height: 100vh;">
         <div class="container py-5 h-100">
             <div class="row d-flex justify-content-center align-items-center h-100">
                 <div class="col col-xl-10">
@@ -126,10 +126,10 @@
                                         </div>
                                         <div class="form-outline mb-4">
                                             
-                                                <select class="form-control" id="role" name="role_selected" required
+                                                <select class="form-control form-control-lg" id="role" name="is_teacher" required
                                                     focus>
-                                                    <option value="Teacher" selected>Teacher</option>
-                                                    <option value="Student" selected>Student</option>
+                                                    <option value="1" selected>Teacher</option>
+                                                    <option value="0" selected>Student</option>
                                                     <option value="Select Role" disabled selected>Select Role</option>
                                                 </select>
                                                 <label class="form-label" for="password">Role</label>
@@ -149,7 +149,7 @@
                                         </div>
 
                                         <div class="form-outline mb-4">
-                                            <input id="password-confirm" type="password" class="form-control"
+                                            <input id="password-confirm" type="password" class="form-control form-control-lg"
                                                 name="password_confirmation" required autocomplete="new-password">
                                             <label class="form-label" for="password">Confirm Password</label>
                                         </div>
