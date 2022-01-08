@@ -75,7 +75,7 @@
     </div>
 </div> -->
 
-<section class="vh-100" style="background-color: #c4b987;">
+<section class="vh-100" style="background-color: #7e8596;">
     <div class="container py-5 h-100">
         <div class="row d-flex justify-content-center align-items-center h-100">
         <div class="col col-xl-10">
@@ -83,7 +83,7 @@
             <div class="row g-0">
                 <div class="col-md-6 col-lg-5 d-none d-md-block">
                 <img
-                    src="/image/hero-register.jpeg"
+                    src="/image/hero-register.jpg"
                     alt="login form"
                     class="img-fluid" style="border-radius: 1rem 0 1rem 0;height: 80%;"
                 />

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Files;
+use App\Models\ProgLanguages;
 use App\Http\Requests\StoreFilesRequest;
 use App\Http\Requests\UpdateFilesRequest;
 
@@ -15,7 +16,23 @@ class FilesController extends Controller
      */
     public function index()
     {
-        //
+        $progLangId = -1;
+
+        if(!isset($_GET['progLangId'])){
+            return redirect('/programming-languages');
+        }else{
+            $progLangId = $_GET['progLangId'];
+        }
+
+
+        $files = Files::where('programming_language_id', $progLangId)->get();
+        $progLang = ProgLanguages::where('id', $progLangId)->first();
+
+        return view('files.index',
+        [
+            'files' => $files,
+            'progLang' => $progLang,
+        ]);
     }
 
     /**
@@ -45,9 +62,14 @@ class FilesController extends Controller
      * @param  \App\Models\Files  $files
      * @return \Illuminate\Http\Response
      */
-    public function show(Files $files)
+    public function show($id)
     {
-        //
+        $file = Files::where('id', $id)->first();
+
+        return view('files.show',
+        [
+            'file' => $file,
+        ]);
     }
 
     /**
