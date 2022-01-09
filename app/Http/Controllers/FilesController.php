@@ -20,6 +20,8 @@ class FilesController extends Controller
      */
     public function index()
     {
+        if(!Auth::user())return redirect('/login');
+
         if (!isset($_GET['manage'])) {
             $progLangId = -1;
 
@@ -41,10 +43,20 @@ class FilesController extends Controller
             ]
             );
         }else{
-            if(!Auth::user()->is_teacher)return redirect('/home');
-
             $files = Files::all();
             $progLang = ProgLanguages::all();
+            if(!Auth::user()->is_teacher)return redirect('/home');
+
+            if(isset($_GET['query'])){
+                $query = $_GET['query'];
+                $files = Files::where('title', 'LIKE', "%$query%")
+                            ->orwhere('id', 'LIKE', "%$query%")
+                            ->orwhere('description', 'LIKE', "%$query%")
+                            ->orwhere('filename', 'LIKE', "%$query%")
+                            ->get();
+            }
+
+            
 
             return view('table', [
                 'actionUrl' => '/file',
@@ -78,6 +90,8 @@ class FilesController extends Controller
      */
     public function create()
     {
+        if(!Auth::user())return redirect('/login');
+
         if(!Auth::user()->is_teacher)return redirect('/home');
 
         $progLang = ProgLanguages::all();
@@ -127,6 +141,8 @@ class FilesController extends Controller
      */
     public function store(Request $request)
     {
+        if(!Auth::user())return redirect('/login');
+
         if(!Auth::user()->is_teacher)return redirect('/home');
         $request->filename->storeAs('public', $request->filename->getClientOriginalName());
         $row = new Files;
@@ -148,6 +164,7 @@ class FilesController extends Controller
      */
     public function show($id)
     {
+        if(!Auth::user())return redirect('/login');
         
         if (!isset($_GET['manage'])) {
             $file = Files::where('id', $id)->first();
@@ -203,6 +220,8 @@ class FilesController extends Controller
      */
     public function update(Request $request, $id)
     {
+        if(!Auth::user())return redirect('/login');
+
         if(!Auth::user()->is_teacher)return redirect('/home');
 
         $users = Files::find($id);
@@ -220,6 +239,8 @@ class FilesController extends Controller
      */
     public function destroy($id)
     {
+        if(!Auth::user())return redirect('/login');
+
         if(!Auth::user()->is_teacher)return redirect('/home');
 
         $users = Files::find($id);
