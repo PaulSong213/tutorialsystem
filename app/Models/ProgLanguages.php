@@ -8,4 +8,8 @@ use Illuminate\Database\Eloquent\Model;
 class ProgLanguages extends Model
 {
     use HasFactory;
+    protected $fillable = [
+        'name',
+        'cover_photo_name'
+    ];
 }

@@ -21,11 +21,11 @@
 
       @if ($file->is_module)
       <div class="mx-auto w-100" style="max-width: 800px;">
-      <embed src="/files/{{$file->filename}}" width="100%" height="1000px" />
+      <embed src="/storage/{{$file->filename}}" width="100%" height="1000px" />
       </div>
       @else
       <div class="mx-auto w-100" style="max-width: 800px;">
-      <embed src="/files/{{$file->filename}}" width="100%" height="500px" />
+      <embed src="/storage/{{$file->filename}}" width="100%" height="500px" />
       </div>
       @endif
 

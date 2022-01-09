@@ -14,7 +14,8 @@
             <div class="px-3 row ">
               <div class="col-5">
                 <div class="mx-auto shadow" style="height: 7rem;width: 7rem;border-radius: 1.4rem;overflow: hidden;">
-                <img class="w-100 h-100" src="/files/{{$lang->cover_photo_name}}" alt="">
+                
+                <img class="w-100 h-100" src="/storage/{{$lang->cover_photo_name}}" alt="">
                 </div>
               </div>
               <div class="col-7">

@@ -4,7 +4,7 @@
   <section class="py-5 my-5 ">
     
     <div class="mx-auto" style="height: 3rem;width: 3rem;border-radius: 1.4rem;overflow: hidden;">
-      <img class="w-100 h-100" src="/files/{{$progLang->cover_photo_name}}"  alt="">
+      <img class="w-100 h-100" src="/storage/{{$progLang->cover_photo_name}}"  alt="">
     </div>
 
     <h1 class="text-center fw-bold fs-1 my-4">
