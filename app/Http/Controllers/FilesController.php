@@ -32,8 +32,17 @@ class FilesController extends Controller
             }
 
 
-            $files = Files::where('programming_language_id', $progLangId)->get();
             $progLang = ProgLanguages::where('id', $progLangId)->first();
+            if(isset($_GET['query']) &&  $_GET['query'] ){
+                $query = $_GET['query'];
+                $files = Files::where('title', 'LIKE', "%$query%")
+                            ->orwhere('id', 'LIKE', "%$query%")
+                            ->orwhere('description', 'LIKE', "%$query%")
+                            ->orwhere('filename', 'LIKE', "%$query%")
+                            ->get();
+            }else{
+                $files = Files::where('programming_language_id', $progLangId)->get();
+            }
 
             return view(
                 'files.index',

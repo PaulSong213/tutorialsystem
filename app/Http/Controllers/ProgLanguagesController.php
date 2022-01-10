@@ -19,21 +19,19 @@ class ProgLanguagesController extends Controller
     {
         if(!Auth::user())return redirect('/login');
         $progLang = ProgLanguages::all();
+        if(isset($_GET['query'])){
+            $query = $_GET['query'];
+            $progLang = ProgLanguages::where('name', 'LIKE', "%$query%")
+                        ->orwhere('id', 'LIKE', "%$query%")
+                        ->orwhere('cover_photo_name', 'LIKE', "%$query%")
+                        ->get();
+        }
 
         if(!isset($_GET['manage'])){
             return view('programmingLanguages.index',
             ['progLang' => $progLang]);
         }else{
             if(!Auth::user()->is_teacher)return redirect('/home');
-
-            if(isset($_GET['query'])){
-                $query = $_GET['query'];
-                $progLang = ProgLanguages::where('name', 'LIKE', "%$query%")
-                            ->orwhere('id', 'LIKE', "%$query%")
-                            ->orwhere('cover_photo_name', 'LIKE', "%$query%")
-                            ->get();
-            }
-
             return view('table', [
                 'actionUrl' => '/programming-languages',
                 'tableTitle' => "Programming Languages",
