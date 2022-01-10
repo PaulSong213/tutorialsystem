@@ -17,6 +17,7 @@ class ProgLanguagesController extends Controller
      */
     public function index()
     {
+        if(!Auth::user())return redirect('/login');
         $progLang = ProgLanguages::all();
 
         if(!isset($_GET['manage'])){
@@ -24,6 +25,14 @@ class ProgLanguagesController extends Controller
             ['progLang' => $progLang]);
         }else{
             if(!Auth::user()->is_teacher)return redirect('/home');
+
+            if(isset($_GET['query'])){
+                $query = $_GET['query'];
+                $progLang = ProgLanguages::where('name', 'LIKE', "%$query%")
+                            ->orwhere('id', 'LIKE', "%$query%")
+                            ->orwhere('cover_photo_name', 'LIKE', "%$query%")
+                            ->get();
+            }
 
             return view('table', [
                 'actionUrl' => '/programming-languages',
@@ -42,6 +51,7 @@ class ProgLanguagesController extends Controller
      */
     public function create()
     {
+        if(!Auth::user())return redirect('/login');
         if(!Auth::user()->is_teacher)return redirect('/home');
         return view('add', [
             'actionUrl' => '/programming-languages',
@@ -69,6 +79,8 @@ class ProgLanguagesController extends Controller
      */
     public function store(Request $request)
     {
+        if(!Auth::user())return redirect('/login');
+        
         // $request->cover_photo_name->store('files');
         
         if(!Auth::user()->is_teacher)return redirect('/home');
@@ -88,6 +100,8 @@ class ProgLanguagesController extends Controller
      */
     public function show($id)
     {
+        if(!Auth::user())return redirect('/login');
+
         if(!Auth::user()->is_teacher)return redirect('/home');
         $users = ProgLanguages::where('id', $id)->first();
         return view('edit', [
@@ -123,6 +137,8 @@ class ProgLanguagesController extends Controller
      */
     public function update(Request $request, $id)
     {
+        if(!Auth::user())return redirect('/login');
+
         if(!Auth::user()->is_teacher)return redirect('/home');
         $users = ProgLanguages::find($id);
         if(!$users){
@@ -141,6 +157,8 @@ class ProgLanguagesController extends Controller
      */
     public function destroy($id)
     {
+        if(!Auth::user())return redirect('/login');
+
         if(!Auth::user()->is_teacher)return redirect('/home');
         $users = ProgLanguages::find($id);
         if(!$users){

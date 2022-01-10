@@ -16,9 +16,17 @@ class UserController extends Controller
      */
     public function index()
     {
+        if(!Auth::user())return redirect('/login');
         if(!Auth::user()->is_teacher)return redirect('/home');
 
         $users = User::get();
+
+        if(isset($_GET['query'])){
+            $query = $_GET['query'];
+            $users = User::where('name', 'LIKE', "%$query%")
+                        ->orwhere('email', 'LIKE', "%$query%")
+                        ->get();
+        }
 
         return view('table', [
             'actionUrl' => '/user',
@@ -148,6 +156,8 @@ class UserController extends Controller
      */
     public function update(Request $request, $id)
     {
+        if(!Auth::user())return redirect('/login');
+
         if(!Auth::user()->is_teacher)return redirect('/home');
 
         $users = User::find($id);
@@ -167,6 +177,8 @@ class UserController extends Controller
      */
     public function destroy($id)
     {
+        if(!Auth::user())return redirect('/login');
+
         if(!Auth::user()->is_teacher)return redirect('/home');
 
         $users = User::find($id);

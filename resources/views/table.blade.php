@@ -23,8 +23,31 @@
 
     
 <div class="w-100 mx-auto my-5" style="max-width: 1000px;">
+    <div class="mb-3 d-flex justify-content-between">
+        <form action="{{$actionUrl}}" method="get">
+        <div class="input-group" style="max-width: 300px;">
+            @if(isset($_GET['query']) && $_GET['query'] )
+                <input type="search" name="query" class="form-control rounded" placeholder="Search" value="{{$_GET['query']}}" />
+            @else
+                <input type="search" name="query" class="form-control rounded" placeholder="Search" />
+            @endif
+            <input type="hidden" name="manage" value="1">
+            <button type="submit" class="btn btn-outline-primary">search</button>
+        </div>
+        </form>
+        @if(isset($_GET['query']) && $_GET['query'] )
+        <div>
+            <h6 class="text-success fw-bold fs-4">Search Result for: {{$_GET['query']}} </h6>
+        </div>
+        @endif
+    </div>
     <div class="d-flex justify-content-between">
-        <h6 class="text-secondary fw-bold fs-3"> {{$tableTitle}} </h6>
+        <h6 class="text-secondary fw-bold fs-3"> 
+            {{$tableTitle}} 
+            @if(isset($_GET['query']) && $_GET['query'])
+                <a class="mx-3 fs-5" href="{{$actionUrl}}?manage=1">Show All</a>
+            @endif
+        </h6>
 
         <a href="{{$actionUrl.'/create'}}">
         <button class="btn btn-primary fw-bold fs-6">
