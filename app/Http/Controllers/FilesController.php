@@ -65,8 +65,6 @@ class FilesController extends Controller
                             ->get();
             }
 
-            
-
             return view('table', [
                 'actionUrl' => '/file',
                 'tableTitle' => "Files",
@@ -153,6 +151,20 @@ class FilesController extends Controller
         if(!Auth::user())return redirect('/login');
 
         if(!Auth::user()->is_teacher)return redirect('/home');
+        
+        $request['filename_name'] = explode(".",$request->filename->getClientOriginalName())[0];
+
+        if(sizeof(explode(".",$request->filename->getClientOriginalName()) ) > 2 ){
+            return back()
+                ->with('error','Filenames should not have "." character.')
+                ->withInput();
+        }
+
+        $validated = $request->validate([
+            'filename_name' => 'required|alpha_dash'
+        ]);
+
+
         $request->filename->storeAs('public', $request->filename->getClientOriginalName());
         $row = new Files;
         $row->title = $request['title'];
