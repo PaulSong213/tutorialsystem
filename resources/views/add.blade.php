@@ -21,6 +21,15 @@
     </section>
     @endif
 
+    @if ($errors->any())
+        <div class="alert alert-danger my-3">
+            <ul>
+                @foreach ($errors->all() as $error)
+                    <li>{{ $error }}</li>
+                @endforeach
+            </ul>
+        </div>
+    @endif
     
   <div class="w-100 mx-auto my-5" style="max-width: 700px;">
       <div class="d-flex justify-content-between mb-3">
@@ -61,7 +70,7 @@
             <option value="Select Role" disabled selected>Select Type</option>
         </select>
         @else
-        <input required type="{{$input['type']}}" class="form-control" name="{{$input['name']}}" id="{{$input['name']}}">
+        <input required type="{{$input['type']}}" class="form-control" name="{{$input['name']}}" id="{{$input['name']}}" value="{{ old($input['name']) }}">
         @endif
       </div>
       @endforeach

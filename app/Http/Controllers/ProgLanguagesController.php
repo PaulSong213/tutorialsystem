@@ -7,6 +7,7 @@ use App\Models\ProgLanguages;
 use App\Http\Requests\StoreProgLanguagesRequest;
 use App\Http\Requests\UpdateProgLanguagesRequest;
 use Illuminate\Support\Facades\Auth;
+use App\Rules\Filename;
 
 class ProgLanguagesController extends Controller
 {
@@ -82,6 +83,19 @@ class ProgLanguagesController extends Controller
         // $request->cover_photo_name->store('files');
         
         if(!Auth::user()->is_teacher)return redirect('/home');
+
+        $request['cover_photo_file_name'] = explode(".",$request->cover_photo_name->getClientOriginalName())[0];
+
+        if(sizeof(explode(".",$request->cover_photo_name->getClientOriginalName()) ) > 2 ){
+            return back()
+                ->with('error','Filenames should not have "." character.')
+                ->withInput();
+        }
+
+        $validated = $request->validate([
+            'cover_photo_file_name' => 'required|alpha_dash'
+        ]);
+
         $request->cover_photo_name->storeAs('public', $request->cover_photo_name->getClientOriginalName());
         $row = new ProgLanguages;
         $row->name = $request['name'];
